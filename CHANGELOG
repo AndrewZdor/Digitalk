@@ -34,11 +34,11 @@
 * Renamed CamelCase method names which is not in accordance with Ruby convention.
 * Renamed Users.isAdmin and Users.isGroup fields to is_Admin and isGroup
   and fixed related source code.
+* Fixed doc:diagram:models and doc:diagrams task. It produces models diagram to doc/models.pdf
 
 
 * TODO:
-* to Fix doc:diagrams task
 * to Add haml extension
-* to change and review all models (validation, relations and other)
-* to write new and change existing controlers
+* to modify and review all models (validation, relations and other)
+* to write new and modify existing controlers
 * to implement sequrity (write metods and use them in views)

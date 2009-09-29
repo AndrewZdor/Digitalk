@@ -3485,3 +3485,415 @@ Migrating to RenameUserColumns (20090929141825)
   [4;35;1mSQL (15.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
   [4;36;1mSQL (0.0ms)[0m   [0;1mdescribe `users`[0m
   [4;35;1mSQL (16.0ms)[0m   [0mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-09-29 17:45:47) [GET]
+Rendering template within layouts/application
+Rendering sessions/new
+Completed in 2391ms (View: 125, DB: 16) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2009-09-29 17:46:03) [POST]
+  Parameters: {"commit"=>"Log in", "authenticity_token"=>"HDDUdob+jv3mabq2ZUKLcmc//hvX1x+mVl31oqJPeTA=", "login"=>"Cromano@aberonit.com", "password"=>"4aberon4"}
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (31.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`login` = 'cromano@aberonit.com') LIMIT 1[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/dashboard
+Completed in 282ms (DB: 47) | 302 Found [http://localhost/session]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SiteController#dashboard (for 127.0.0.1 at 2009-09-29 17:46:03) [GET]
+Rendering template within layouts/application
+Rendering site/dashboard
+  [4;36;1mUser Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (16.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Completed in 250ms (View: 218, DB: 32) | 200 OK [http://localhost/dashboard]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MrcsController#index (for 127.0.0.1 at 2009-09-29 17:46:06) [GET]
+  [4;36;1mUser Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+
+NoMethodError (undefined method `mrcs' for #<User:0x49e6610>):
+  app/controllers/application_controller.rb:44:in `get_mrcs'
+
+Rendered rescues/_trace (93.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MrcsController#edit_mrc_form (for 127.0.0.1 at 2009-09-29 17:50:23) [GET]
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+
+NoMethodError (undefined method `mrcs' for #<User:0x46e0628>):
+  app/controllers/application_controller.rb:44:in `get_mrcs'
+
+Rendered rescues/_trace (187.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MrcsController#edit_mrc_form (for 127.0.0.1 at 2009-09-29 17:52:26) [GET]
+  [4;36;1mUser Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+
+NoMethodError (undefined method `is_user?' for #<User:0x48c4458>):
+  app/models/user.rb:129:in `mrcs'
+  app/controllers/application_controller.rb:44:in `get_mrcs'
+
+Rendered rescues/_trace (78.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MrcsController#edit_mrc_form (for 127.0.0.1 at 2009-09-29 17:52:30) [GET]
+  [4;36;1mUser Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+
+NoMethodError (undefined method `is_user?' for #<User:0x465a190>):
+  app/models/user.rb:129:in `mrcs'
+  app/controllers/application_controller.rb:44:in `get_mrcs'
+
+Rendered rescues/_trace (78.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MrcsController#edit_mrc_form (for 127.0.0.1 at 2009-09-29 17:52:31) [GET]
+  [4;36;1mUser Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+
+NoMethodError (undefined method `is_user?' for #<User:0x47f2318>):
+  app/models/user.rb:129:in `mrcs'
+  app/controllers/application_controller.rb:44:in `get_mrcs'
+
+Rendered rescues/_trace (79.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (15.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MrcsController#edit_mrc_form (for 127.0.0.1 at 2009-09-29 17:52:32) [GET]
+  [4;36;1mUser Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+
+NoMethodError (undefined method `is_user?' for #<User:0x49e0bac>):
+  app/models/user.rb:129:in `mrcs'
+  app/controllers/application_controller.rb:44:in `get_mrcs'
+
+Rendered rescues/_trace (78.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MrcsController#edit_mrc_form (for 127.0.0.1 at 2009-09-29 17:52:33) [GET]
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+
+NoMethodError (undefined method `is_user?' for #<User:0x46f1ff4>):
+  app/models/user.rb:129:in `mrcs'
+  app/controllers/application_controller.rb:44:in `get_mrcs'
+
+Rendered rescues/_trace (281.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MrcsController#edit_mrc_form (for 127.0.0.1 at 2009-09-29 17:52:34) [GET]
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+
+NoMethodError (undefined method `is_user?' for #<User:0x48e0b80>):
+  app/models/user.rb:129:in `mrcs'
+  app/controllers/application_controller.rb:44:in `get_mrcs'
+
+Rendered rescues/_trace (78.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MrcsController#edit_mrc_form (for 127.0.0.1 at 2009-09-29 17:52:35) [GET]
+  [4;36;1mUser Columns (15.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+
+NoMethodError (undefined method `is_user?' for #<User:0x4667368>):
+  app/models/user.rb:129:in `mrcs'
+  app/controllers/application_controller.rb:44:in `get_mrcs'
+
+Rendered rescues/_trace (78.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MrcsController#edit_mrc_form (for 127.0.0.1 at 2009-09-29 17:52:36) [GET]
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+
+NoMethodError (undefined method `is_user?' for #<User:0x47fbee0>):
+  app/models/user.rb:129:in `mrcs'
+  app/controllers/application_controller.rb:44:in `get_mrcs'
+
+Rendered rescues/_trace (157.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SiteController#dashboard (for 127.0.0.1 at 2009-09-29 17:54:59) [GET]
+Rendering template within layouts/application
+Rendering site/dashboard
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Completed in 62ms (View: 62, DB: 16) | 200 OK [http://localhost/dashboard]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing MrcsController#index (for 127.0.0.1 at 2009-09-29 17:55:01) [GET]
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+
+NoMethodError (undefined method `mrcs' for #<User:0x48db928>):
+  app/controllers/application_controller.rb:44:in `get_mrcs'
+
+Rendered rescues/_trace (78.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ProjectsController#index (for 127.0.0.1 at 2009-09-29 17:55:04) [GET]
+  [4;36;1mUser Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+
+NoMethodError (undefined method `projects' for #<User:0x4669ec4>):
+  app/controllers/application_controller.rb:63:in `get_projects'
+
+Rendered rescues/_trace (78.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ClientsController#index (for 127.0.0.1 at 2009-09-29 17:55:12) [GET]
+  [4;36;1mUser Columns (15.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+
+NoMethodError (undefined method `mrcs' for #<User:0x47de6d8>):
+  app/controllers/application_controller.rb:44:in `get_mrcs'
+  app/controllers/application_controller.rb:48:in `get_mrcs_and_clients'
+
+Rendered rescues/_trace (281.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2009-09-29 17:55:16) [GET]
+  [4;36;1mUser Columns (15.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+
+NoMethodError (undefined method `is_user?' for #<User:0x49c0f28>):
+  app/controllers/application_controller.rb:25:in `can_add_project'
+  app/controllers/application_controller.rb:33:in `can_add_users'
+
+Rendered rescues/_trace (78.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (15.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ProjectsController#index (for 127.0.0.1 at 2009-09-29 17:55:19) [GET]
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+
+NoMethodError (undefined method `projects' for #<User:0x46ce8b0>):
+  app/controllers/application_controller.rb:63:in `get_projects'
+
+Rendered rescues/_trace (204.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ProjectsController#index (for 127.0.0.1 at 2009-09-29 17:55:26) [GET]
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+
+NoMethodError (undefined method `projects' for #<User:0x48c045c>):
+  app/controllers/application_controller.rb:63:in `get_projects'
+
+Rendered rescues/_trace (78.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SurveysController#index (for 127.0.0.1 at 2009-09-29 17:55:33) [GET]
+  [4;36;1mSurvey Load (0.0ms)[0m   [0;1mSELECT * FROM `surveys` [0m
+Rendering template within layouts/application
+Rendering surveys/index
+  [4;35;1mUser Columns (15.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Completed in 219ms (View: 188, DB: 31) | 200 OK [http://localhost/surveys]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing BlogsController#new (for 127.0.0.1 at 2009-09-29 17:55:44) [GET]
+  [4;35;1mBlog Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `blogs`[0m
+Rendering template within layouts/application
+Rendering blogs/new
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Completed in 781ms (View: 765, DB: 0) | 200 OK [http://localhost/blogs/new]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mAssignment Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `assignments`[0m
+  [4;35;1mBlog Columns (15.0ms)[0m   [0mSHOW FIELDS FROM `blogs`[0m
+  [4;36;1mClient Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `clients`[0m
+  [4;35;1mEntity Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `entities`[0m
+  [4;36;1mMrc Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `mrcs`[0m
+  [4;35;1mProject Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `projects`[0m
+  [4;36;1mProjectGroup Columns (15.0ms)[0m   [0;1mSHOW FIELDS FROM `project_groups`[0m
+  [4;35;1mSurvey Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `surveys`[0m
+  [4;36;1mUser Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUserGrouping Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `user_groupings`[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mAssignment Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `assignments`[0m
+  [4;35;1mBlog Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `blogs`[0m
+  [4;36;1mClient Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `clients`[0m
+  [4;35;1mEntity Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `entities`[0m
+  [4;36;1mMrc Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `mrcs`[0m
+  [4;35;1mProject Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `projects`[0m
+  [4;36;1mProjectGroup Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `project_groups`[0m
+  [4;35;1mSurvey Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `surveys`[0m
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUserGrouping Columns (15.0ms)[0m   [0mSHOW FIELDS FROM `user_groupings`[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mAssignment Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `assignments`[0m
+  [4;35;1mBlog Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `blogs`[0m
+  [4;36;1mClient Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `clients`[0m
+  [4;35;1mEntity Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `entities`[0m
+  [4;36;1mMrc Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `mrcs`[0m
+  [4;35;1mProject Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `projects`[0m
+  [4;36;1mProjectGroup Columns (15.0ms)[0m   [0;1mSHOW FIELDS FROM `project_groups`[0m
+  [4;35;1mSurvey Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `surveys`[0m
+  [4;36;1mUser Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUserGrouping Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `user_groupings`[0m
+  [4;36;1mSQL (15.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mAssignment Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `assignments`[0m
+  [4;35;1mBlog Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `blogs`[0m
+  [4;36;1mClient Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `clients`[0m
+  [4;35;1mEntity Columns (15.0ms)[0m   [0mSHOW FIELDS FROM `entities`[0m
+  [4;36;1mMrc Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `mrcs`[0m
+  [4;35;1mProject Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `projects`[0m
+  [4;36;1mProjectGroup Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `project_groups`[0m
+  [4;35;1mSurvey Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `surveys`[0m
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUserGrouping Columns (15.0ms)[0m   [0mSHOW FIELDS FROM `user_groupings`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (15.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mAssignment Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `assignments`[0m
+  [4;35;1mBlog Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `blogs`[0m
+  [4;36;1mClient Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `clients`[0m
+  [4;35;1mEntity Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `entities`[0m
+  [4;36;1mMrc Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `mrcs`[0m
+  [4;35;1mProject Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `projects`[0m
+  [4;36;1mProjectGroup Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `project_groups`[0m
+  [4;35;1mSurvey Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `surveys`[0m
+  [4;36;1mUser Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUserGrouping Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `user_groupings`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mAssignment Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `assignments`[0m
+  [4;35;1mBlog Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `blogs`[0m
+  [4;36;1mClient Columns (15.0ms)[0m   [0;1mSHOW FIELDS FROM `clients`[0m
+  [4;35;1mEntity Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `entities`[0m
+  [4;36;1mMrc Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `mrcs`[0m
+  [4;35;1mProject Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `projects`[0m
+  [4;36;1mProjectGroup Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `project_groups`[0m
+  [4;35;1mSurvey Columns (15.0ms)[0m   [0mSHOW FIELDS FROM `surveys`[0m
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUserGrouping Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `user_groupings`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mAssignment Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `assignments`[0m
+  [4;35;1mBlog Columns (15.0ms)[0m   [0mSHOW FIELDS FROM `blogs`[0m
+  [4;36;1mClient Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `clients`[0m
+  [4;35;1mEntity Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `entities`[0m
+  [4;36;1mMrc Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `mrcs`[0m
+  [4;35;1mProject Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `projects`[0m
+  [4;36;1mProjectGroup Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `project_groups`[0m
+  [4;35;1mSurvey Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `surveys`[0m
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUserGrouping Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `user_groupings`[0m
+  [4;36;1mSQL (15.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mAssignment Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `assignments`[0m
+  [4;35;1mBlog Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `blogs`[0m
+  [4;36;1mClient Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `clients`[0m
+  [4;35;1mEntity Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `entities`[0m
+  [4;36;1mMrc Columns (15.0ms)[0m   [0;1mSHOW FIELDS FROM `mrcs`[0m
+  [4;35;1mProject Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `projects`[0m
+  [4;36;1mProjectGroup Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `project_groups`[0m
+  [4;35;1mSurvey Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `surveys`[0m
+  [4;36;1mUser Columns (15.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUserGrouping Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `user_groupings`[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mAssignment Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `assignments`[0m
+  [4;35;1mBlog Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `blogs`[0m
+  [4;36;1mClient Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `clients`[0m
+  [4;35;1mEntity Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `entities`[0m
+  [4;36;1mMrc Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `mrcs`[0m
+  [4;35;1mProject Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `projects`[0m
+  [4;36;1mProjectGroup Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `project_groups`[0m
+  [4;35;1mSurvey Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `surveys`[0m
+  [4;36;1mUser Columns (15.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUserGrouping Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `user_groupings`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
