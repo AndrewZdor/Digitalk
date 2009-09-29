@@ -1,9 +1,0 @@
-<% if !@projects.blank?%>
-<%@projects.each do |project|%>
-  <%=link_to_remote project.title ,:url => { :action => "get_project_users",:id=>project.id},
-                                                                            :loading =>"$('#ajax-indicator').show();" ,
-                                                                            :complete =>"$('#ajax-indicator').hide();"%><br />
-<%end%>
-<%else%>
-no projects found
-<%end%>
