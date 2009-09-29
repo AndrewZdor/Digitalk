@@ -1,0 +1,10 @@
+<% if !@mrcs.blank?%>
+<%@mrcs.each do |user|%>
+   <%=link_to_remote user.name,:url => { :action => "show_clients",:id=>user.id} ,
+        :loading =>"$('#ajax-indicator').show();" ,
+        :complete =>"$('#ajax-indicator').hide();"%>
+<br />
+<%end%>
+<%else%>
+no mrcs found
+<%end%>

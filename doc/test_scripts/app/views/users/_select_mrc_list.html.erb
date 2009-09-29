@@ -1,0 +1,17 @@
+<% if !@mrcs.blank?%>
+<%@mrcs.each do |user|%>
+  
+	<% if authorized_user(role,user)%>
+	  
+			<% if @user_action == 'new'%>
+				<%=check_box_tag "filter_#{role}_mrcs[]", user.id,false%><%=label_tag user.name%>
+			<%elsif(@user_action == 'edit')%>
+					<%=check_box_tag "filter_#{role}_mrcs[]", user.id,check_relation(user,role)%><%=label_tag user.name%>
+			<%end%>
+		
+    <%end%>
+<br />
+<%end%>
+<%else%>
+no mrcs found
+<%end%>

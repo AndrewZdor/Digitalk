@@ -1,0 +1,15 @@
+<% if !@mrcs.blank?%>
+<%@mrcs.each do |user|%>
+  <%if[1,2].include?(user.current_user_right)%>
+      <%=link_to_remote user.name,:url => { :action => "edit_mrc_form",:id=>user.id},
+              :loading =>"$('#ajax-indicator').show();" ,
+              :complete =>"$('#ajax-indicator').hide();" 
+      %>
+     <%else%>
+      <%=user.name%>
+    <%end%>
+<br />
+<%end%>
+<%else%>
+no mrcs found
+<%end%>

@@ -1,0 +1,45 @@
+<% @user.password = @user.password_confirmation = nil %>
+<div id="error_messages">
+<%= error_messages_for :user %>
+</div>
+
+<p><%= label_tag 'login' %><br/>
+<%if @user_action == 'new'%>
+  <%= f.text_field :login %>
+<%else%>
+  <%= @user.login %>
+<%end%>
+</p>
+
+<p><%= label_tag 'password' %><br/>
+<%= f.password_field :password %></p>
+
+<p><%= label_tag 'password_confirmation', 'Confirm Password' %><br/>
+<%= f.password_field :password_confirmation %></p>
+
+<p><%= label_tag 'first_name', 'First Name' %><br/>
+<%= f.text_field :first_name %></p>
+
+<p><%= label_tag 'last_name', 'Last Name' %><br/>
+<%= f.text_field :last_name %></p>
+
+<script>
+  $("#role_admin")
+</script>
+
+<p><%= label_tag 'role' %><br/>
+  <%if @user_action == 'edit'%>
+       <%if @user.current_user_right == 'admin'%>
+          <%=  radio_button_tag 'role', 'admin' ,true%>  Admin
+          <%=  radio_button_tag 'role', 'write' %>  Write
+	     <%elsif @user.current_user_right == 'write'%> 
+	       <%=  radio_button_tag 'role', 'write' %>  Write
+	    <%end%>
+        <%=  radio_button_tag 'role', 'read' %>  Read
+   <%else%>
+      <%=  radio_button_tag 'role', 'admin' ,true%>  Admin
+      <%=  radio_button_tag 'role', 'write' %>  Write
+      <%=  radio_button_tag 'role', 'read' %>  Read
+  <%end%>
+  
+  </p>

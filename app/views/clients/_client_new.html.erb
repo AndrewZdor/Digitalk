@@ -1,0 +1,23 @@
+<div id="client_errors"></div>
+<style>
+ #mrc_fields ul {list-style:none;float:left;margin:0px;padding:0px;}
+ #mrc_fields ul li{height:20px;margin-bottom:5px;}
+</style>
+
+<div id="mrc_fields">
+<ul style="width:120px;text-align:right;">
+<li><%= label_tag 'name', 'Client' %></li>
+<li><%= label_tag 'address', 'Address' %></li>
+<li><%= label_tag 'address2', 'Address2' %></li>
+<li><%= label_tag 'city', 'City, State, Zip' %></li>
+<li><%= label_tag 'phone', 'Phone Number' %></li>
+</ul>
+<ul style="width:300px;margin-left:30px;">
+<li><%= f.text_field :name,:size=>"30"%></li>
+<li><%= f.text_field :address ,:size=>"15"%></li>
+<li><%= f.text_field :address2 ,:size=>"15"%></li>
+<li><%= f.text_field :city ,:size=>"7"%>&nbsp;<%= f.text_field :state,:size=>"7"%>&nbsp;<%= f.text_field :zip,:size=>"7"%></li>
+<li><%=select(:client,:mrc_id,@owned_mrcs.map{|m| [m.name,m.id]},{:selected => @client.mrc_id})%></li>
+</ul>
+
+ </div>

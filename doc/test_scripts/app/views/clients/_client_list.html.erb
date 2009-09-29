@@ -1,0 +1,12 @@
+<% if !@clients.blank?%>
+<% @clients.each do |client|%>
+  			<%if authorized_user('write',client)%>
+						<%=link_to_remote client.name,:url => { :action => "edit_client_form",:id=>client.id}%>
+					 <%else%>
+						<%=client.name%>
+					<%end%>
+<br />
+<%end%>
+<%else%>
+no clients found
+<%end%>

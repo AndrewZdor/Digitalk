@@ -1,0 +1,33 @@
+<%form_remote_for(@user) do |f| -%>
+ <fieldset style="height:100px;">
+  <legend>Action</legend>
+  <table height='100'>
+    <tr> 
+        <td width='50'><%if authorise_to_add_or_edit%><%=link_to_remote "new",:url => { :action => "load_user_form"}%><%else%>new<%end%></td>
+        <td width='50'><%= link_to_remote "Cancel" ,:url=>{:action=>"cancel"}%></td>
+        <td width='50'>Copy</td>
+        <td width='50'>Import</td>
+    </tr>
+    <tr> 
+        <td width='50'><%if authorise_to_add_or_edit %><%=submit_tag 'save user'%><%else%>save user<%end%></td>
+        <td width='50'><%if(authorized_user('admin',@user) and @user_action == 'edit')%>
+				    <%=link_to_remote 'Delete', :url  =>{:action=>'destroy' ,:id=>@user.id}, :method => :delete, :confirm => 'Are you sure?'%>
+				   <%else%>Delete<%end%>
+	</td>
+        <td width='50'>&nbsp;</td>
+        <td width='50'>Export</td>
+    </tr>
+  </table>
+</fieldset>
+<fieldset style="border:none;">
+<fieldset>
+  <legend>User Information</legend>
+	  <div style="height:600px;overflow:auto;" id="user_information_form">
+		<%if authorise_to_add_or_edit%>
+		  <%=render:partial=>'user_new',:locals=>{:f=>f}%>
+		<%end%>
+	   </div>
+</fieldset>   
+ <%= render :partial =>'assignment_list'%> 
+</fieldset>
+<%end -%>

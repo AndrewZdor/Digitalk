@@ -1,0 +1,21 @@
+<div style="float:left;width:200px;">
+<%=render:partial=>'mrc_live_search'%>
+</div>
+<div style="float:left;width:200px;">
+  <fieldset style="height:1000px;">
+	<legend>Client List</legend>
+  <div id="client_list">
+	<%=render:partial=>'client_list'%>
+	</div>
+  </fieldset>
+</div>
+	<div style="float:left;width:200px;">
+		<fieldset style="height:1000px;">
+		<legend>Project List</legend>
+		<div id="project_list"><%=render:partial=>'project_list'%></div>
+		</fieldset>
+	</div>
+
+<div style="float:left;width:400px;" id="project_form">
+ <%=render:partial=>'project_form'%>
+</div>
