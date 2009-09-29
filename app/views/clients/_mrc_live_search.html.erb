@@ -1,0 +1,23 @@
+<fieldset style="height:500px;">
+<legend>Market Research Companies</legend>
+<div id="reset_link"></div>
+ <input type="text" name="live_search" id="live_search" value="search mrcs..."/>
+ <%= observe_field(:live_search,
+                 :frequency => 0.5,
+                 :with => 'q',
+                 :url => { :action => :live_search,:controller=>:clients},
+                 :loading =>"$('#ajax-indicator').show();" ,
+                 :complete =>"$('#ajax-indicator').hide();") %>
+<script>
+  $('#live_search').focus(function () {
+	if($(this).val()=="search mrcs..."){
+               $(this).val("");
+            }
+
+	});
+</script>
+ <div id="mrc_list" style="margin-left:10px;">
+ <%=render:partial=>'clients/mrc_list'%>
+ </div>
+ 
+ </fieldset>

@@ -1,0 +1,12 @@
+<% if !@projects.blank?%>
+<% @projects.each do |project|%>
+				<%if[1,2].include?(project.current_user_right)%>
+						<%=link_to_remote project.title,:url => { :action => "edit_project_form",:id=>project.id}%>
+					 <%else%>
+						<%=project.title%>
+					<%end%>
+<br />
+<%end%>
+<%else%>
+no projects found
+<%end%>

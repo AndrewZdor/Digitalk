@@ -1,0 +1,7 @@
+<% if !@mrcs.blank?%>
+<%@mrcs.each do |user|%>
+  <%=link_to_remote user.name ,:url => { :action => "set_children",:id=>user.id,:class_name=>"mrc"}%><br />
+<%end%>
+<%else%>
+no mrcs found
+<%end%>

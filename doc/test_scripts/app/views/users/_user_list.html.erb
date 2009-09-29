@@ -1,0 +1,12 @@
+<% if !@users.blank?%>
+<%@users.each do |user|%>
+  <%if['admin','write'].include?(user.current_user_right)%>
+      <%=link_to_remote user.name,:url => { :action => "edit_user_form",:id=>user.id}%>
+     <%else%>
+      <%=user.name%>
+    <%end%>
+<br />
+<%end%>
+<%else%>
+no users found
+<%end%>

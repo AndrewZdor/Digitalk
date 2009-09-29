@@ -1,0 +1,23 @@
+<div id="mrc_errors"></div>
+<style>
+ #mrc_fields ul {list-style:none;float:left;margin:0px;padding:0px;}
+ #mrc_fields ul li{height:20px;margin-bottom:5px;}
+</style>
+
+<div id="mrc_fields">
+<ul style="width:180px;text-align:right;">
+<li><%= label_tag 'name', 'Market Research Company' %></li>
+<li><%= label_tag 'address', 'Address' %></li>
+<li><%= label_tag 'address2', 'Address2' %></li>
+<li><%= label_tag 'city', 'City, State, Zip' %></li>
+<li><%= label_tag 'phone', 'Phone Number' %></li>
+</ul>
+<ul style="width:500px;margin-left:30px;">
+<li><%= f.text_field :name,:size=>"50"%></li>
+<li><%= f.text_field :address ,:size=>"20"%></li>
+<li><%= f.text_field :address2 ,:size=>"20"%></li>
+<li><%= f.text_field :city ,:size=>"20"%>&nbsp;&nbsp;&nbsp;<%= f.text_field :state,:size=>"10"%>&nbsp;&nbsp;&nbsp;<%= f.text_field :zip,:size=>"10"%></li>
+<li><%= f.text_field :phone,:size=>"20"%></li>
+</ul>
+
+ </div>

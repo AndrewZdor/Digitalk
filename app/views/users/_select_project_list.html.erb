@@ -1,0 +1,17 @@
+<% if !@projects.blank?%>
+<%@projects.each do |pr|%>
+  
+	<% if authorized_user(role,pr)%>
+	  
+			<% if @user_action == 'new'%>
+				<%=check_box_tag "filter_#{role}_projects[]", pr.id,false%><%=label_tag pr.title%><br />
+			<%else%>
+					<%=check_box_tag "filter_#{role}_projects[]", pr.id,check_relation(role,pr,@user,'project')%><%=label_tag pr.title%><br />
+			<%end%>
+		
+    <%end%>
+
+<%end%>
+<%else%>
+no projects found
+<%end%>

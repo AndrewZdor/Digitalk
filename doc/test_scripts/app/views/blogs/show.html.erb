@@ -1,0 +1,28 @@
+<p>
+  <b>Reference:</b>
+  <%=h @blog.reference %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%=h @blog.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @blog.description %>
+</p>
+
+<p>
+  <b>Published date:</b>
+  <%=h @blog.published_date %>
+</p>
+
+<p>
+  <b>Is published:</b>
+  <%=h @blog.is_published %>
+</p>
+
+
+<%= link_to 'Edit', edit_blog_path(@blog) %> |
+<%= link_to 'Back', blogs_path %>
