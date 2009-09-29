@@ -29,6 +29,11 @@
 * Added doc:diagrams rake task ('lib/task/diagrams.rake'). Doesn't work properly yet.
   Requirements: railroad gem and Graphviz (http://www.graphviz.org/).
 
+* (September 29, 2009)*
+
+* Renamed CamelCase method names which is not in accordance with Ruby convention.
+* Renamed Users.isAdmin and Users.isGroup fields to is_Admin and isGroup
+  and fixed related source code.
 
 
 * TODO:

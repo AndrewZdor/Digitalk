@@ -26,23 +26,21 @@ class UserGrouping < ActiveRecord::Base
   validates_uniqueness_of :user_id, :scope => :group_user_id
 
   # Respondent must be assigned onto the project and have defined group type.
-  validates_presence_of :project_id, :project_group_id,
-      :unless => 'user.isAdmin' #FIXME: Is it correct?
-  validates_uniqueness_of :user_id,
-      :scope => :project_id, :unless => 'project_id.blank?'
+  validates_presence_of :project_id, :project_group_id, :unless => 'user.is_admin' #FIXME: Is it correct?
+  validates_uniqueness_of :user_id, :scope => :project_id, :unless => 'project_id.blank?'
   validates_presence_of :project_group_id, :if => 'project_id.blank?'
 
   #Disallow nested groups.
-  validate :validateGroupNested
-  def validateGroupNested
-    return if user.isGroup == group.isGroup
+  validate :validate_group_nested
+  def validate_group_nested
+    return if user.is_group == group.is_group
     errors.add_to_base("Groups cannot be nested!")
   end
 
   #Disallow mixed groups.
-  validate :validateGroupMixed
-  def validateGroupMixed
-    return if user.isAdmin == group.isAdmin
+  validate :validate_group_mixed
+  def validate_group_mixed
+    return if user.is_admin == group.is_admin
     errors.add_to_base("Administrator and respondent users canot be mixed within the group!")
   end
 

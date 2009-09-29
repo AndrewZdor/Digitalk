@@ -23,9 +23,9 @@ class Assignment < ActiveRecord::Base
   validates_uniqueness_of :subject_id, :scope => [:user_id, :entity_id]
 
   #Disallow assignments for respondent users.
-   validate :validate_isAdmin
-   def validate_isAdmin
-     return if user.isAdmin
+   validate :validate_is_admin
+   def validate_is_admin
+     return if user.is_admin
      errors.add_to_base("Administrators only can be given assignments!")
    end
 

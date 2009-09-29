@@ -3420,3 +3420,68 @@ Rendering blogs/new
   [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
   [4;35;1mUser Load (16.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
 Completed in 94ms (View: 62, DB: 48) | 200 OK [http://localhost/blogs/new]
+  [4;36;1mSQL (78.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (78.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20090825062256)
+Migrating to CreateOwnerships (20090825083905)
+Migrating to CreateMrcs (20090905111820)
+Migrating to CreateClients (20090905111854)
+Migrating to CreateProjects (20090905112336)
+Migrating to CreateBlogs (20090905112527)
+Migrating to CreateSurveys (20090905112614)
+Migrating to CreateRoles (20090905114857)
+Migrating to CreateAssignments (20090924173659)
+Migrating to AddColumnsToUsers (20090924175248)
+Migrating to CreateAdminGroupings (20090925093727)
+Migrating to CreateProjectGroups (20090925101532)
+Migrating to CreateProjectUsers (20090925102138)
+Migrating to CreateEntities (20090925135114)
+Migrating to RemoveOdds (20090927201918)
+Migrating to MeetRespondents (20090927223310)
+Migrating to MiscRename (20090927230617)
+Migrating to DefaultPermission (20090928000556)
+Migrating to DefaultUserNotInGroup (20090928001230)
+Migrating to MakeAssignmentsPolymorphic (20090928102943)
+Migrating to RenameUserColumns (20090929141825)
+  [4;36;1mSQL (32.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (15.0ms)[0m   [0mSHOW COLUMNS FROM `users` LIKE 'isGroup'[0m
+  [4;36;1mSQL (250.0ms)[0m   [0;1mALTER TABLE `users` CHANGE `isGroup` `is_group` tinyint(1) DEFAULT 0[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW COLUMNS FROM `users` LIKE 'isAdmin'[0m
+  [4;35;1mSQL (437.0ms)[0m   [0mALTER TABLE `users` CHANGE `isAdmin` `is_admin` tinyint(1) DEFAULT NULL[0m
+  [4;36;1mSQL (47.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090929141825')[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (31.0ms)[0m   [0;1mSHOW FIELDS FROM `assignments`[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mdescribe `assignments`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `assignments`[0m
+  [4;35;1mSQL (47.0ms)[0m   [0mSHOW FIELDS FROM `blogs`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mdescribe `blogs`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `blogs`[0m
+  [4;36;1mSQL (32.0ms)[0m   [0;1mSHOW FIELDS FROM `clients`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mdescribe `clients`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `clients`[0m
+  [4;35;1mSQL (31.0ms)[0m   [0mSHOW FIELDS FROM `entities`[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mdescribe `entities`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `entities`[0m
+  [4;36;1mSQL (31.0ms)[0m   [0;1mSHOW FIELDS FROM `mrcs`[0m
+  [4;35;1mSQL (15.0ms)[0m   [0mdescribe `mrcs`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `mrcs`[0m
+  [4;35;1mSQL (32.0ms)[0m   [0mSHOW FIELDS FROM `project_groups`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mdescribe `project_groups`[0m
+  [4;35;1mSQL (15.0ms)[0m   [0mSHOW KEYS FROM `project_groups`[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSHOW FIELDS FROM `projects`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mdescribe `projects`[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSHOW KEYS FROM `projects`[0m
+  [4;35;1mSQL (31.0ms)[0m   [0mSHOW FIELDS FROM `surveys`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mdescribe `surveys`[0m
+  [4;35;1mSQL (15.0ms)[0m   [0mSHOW KEYS FROM `surveys`[0m
+  [4;36;1mSQL (32.0ms)[0m   [0;1mSHOW FIELDS FROM `user_groupings`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mdescribe `user_groupings`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `user_groupings`[0m
+  [4;35;1mSQL (15.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mdescribe `users`[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mSHOW KEYS FROM `users`[0m

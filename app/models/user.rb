@@ -39,12 +39,12 @@ class User < ActiveRecord::Base
   validates_numericality_of  :mobile,      :allow_nil => true
   validates_numericality_of  :phone,       :allow_nil => true
 
-  validates_presence_of :isAdmin, :if => 'isGroup',
+  validates_presence_of :is_admin, :if => 'is_group',
       :message => "Account must be of admin type to be a group."
-  validate :isGroupValid?
-  def isGroupValid?
-    return unless isGroup && !isAdmin
-    errors.add(:isGroup, "Grouping is not allowed for non-administrators.")
+  validate :is_group_valid?
+  def is_group_valid?
+    return unless is_group && !is_admin
+    errors.add(:is_group, "Grouping is not allowed for non-administrators.")
   end
 
   # Make this class' validation code DRY.
@@ -52,7 +52,7 @@ class User < ActiveRecord::Base
 
 #  attr_accessor :current_user_right,:can_add_users
 
-  attr_protected :isAdmin
+  attr_protected :is_admin
 
 #  has_many :owned_mrcs,:class_name=>"Mrc",:through =>:ownerships ,:conditions =>["ownable_type=?",'mrc'] ,:source=>:mrc,:include =>[:ownerships]
 #  has_many :owned_clients ,:class_name=>"Client",:through =>:ownerships ,:conditions =>["ownable_type=?",'client'],:source=>:client,:include =>[:ownerships]
