@@ -9,7 +9,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090905114857) do
+ActiveRecord::Schema.define(:version => 20090928102943) do
+
+  create_table "assignments", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "entity_id"
+    t.integer  "permission_mask",       :default => 0
+    t.integer  "assigned_by_user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "security_subject_id"
+    t.string   "security_subject_type"
+  end
 
   create_table "blogs", :force => true do |t|
     t.integer  "project_id"
@@ -34,6 +45,13 @@ ActiveRecord::Schema.define(:version => 20090905114857) do
     t.datetime "updated_at"
   end
 
+  create_table "entities", :force => true do |t|
+    t.string   "name"
+    t.integer  "parent_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "mrcs", :force => true do |t|
     t.string   "name"
     t.string   "address"
@@ -46,11 +64,9 @@ ActiveRecord::Schema.define(:version => 20090905114857) do
     t.datetime "updated_at"
   end
 
-  create_table "ownerships", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "ownable_id"
-    t.integer  "role_id"
-    t.string   "ownable_type"
+  create_table "project_groups", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -66,13 +82,6 @@ ActiveRecord::Schema.define(:version => 20090905114857) do
     t.datetime "updated_at"
   end
 
-  create_table "roles", :force => true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "surveys", :force => true do |t|
     t.integer  "project_id"
     t.string   "title"
@@ -83,19 +92,29 @@ ActiveRecord::Schema.define(:version => 20090905114857) do
     t.datetime "updated_at"
   end
 
+  create_table "user_groupings", :force => true do |t|
+    t.integer  "group_user_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "project_id"
+    t.integer  "project_group_id"
+  end
+
   create_table "users", :force => true do |t|
-    t.string   "login",                     :limit => 40,                  :null => false
+    t.string   "login",                     :limit => 40,  :default => "",    :null => false
     t.string   "first_name",                :limit => 100, :default => ""
     t.string   "last_name",                 :limit => 100, :default => ""
-    t.string   "crypted_password",          :limit => 40,                  :null => false
+    t.string   "crypted_password",          :limit => 40,  :default => "",    :null => false
     t.string   "salt",                      :limit => 40
-    t.string   "level"
     t.string   "phone"
     t.string   "mobile"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "remember_token",            :limit => 40
     t.datetime "remember_token_expires_at"
+    t.boolean  "isGroup",                                  :default => false
+    t.boolean  "isAdmin"
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true

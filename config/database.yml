@@ -18,7 +18,7 @@ development:
   adapter: mysql
   encoding: utf8
   reconnect: false
-  database: live_development
+  database: digitalk_dev
   pool: 5
   username: root
   password:
@@ -44,5 +44,5 @@ production:
   database: live_production
   pool: 5
   username: root
-  password: 
+  password:
   socket: /var/run/mysqld/mysqld.sock
