@@ -1,8 +1,0 @@
-<% if !@mrcs.blank?%>
-<%@mrcs.each do |user|%>
-   <%=link_to_remote user.name,:url => { :action => "show_clients",:id=>user.id}%>
-<br />
-<%end%>
-<%else%>
-no mrcs found
-<%end%>

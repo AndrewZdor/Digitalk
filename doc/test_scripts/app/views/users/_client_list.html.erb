@@ -1,7 +1,0 @@
-<% if !@clients.blank?%>
-<%@clients.each do |user|%>
-  <%=link_to_remote user.name ,:url => { :action => "set_children",:id=>user.id}%><br />
-<%end%>
-<%else%>
-no clients found
-<%end%>
