@@ -1,0 +1,39 @@
+* (September 24, 2009)*
+
+* Generated project documentation
+* Created db development structure dump
+* Updated shema.rb
+* Added Entities (to avoid hard code)
+* Added Hierarchies
+
+* (September 25, 2009)*
+
+* Changed Entities
+* Removed Hierarchies
+* Added Project_users
+* Added Project_groups
+* Changed Users
+* Added Admin_grouping
+* Added Assignments
+
+* (September 28, 2009)*
+
+* Added acts_as_tree extension to use with entities model and others in future.
+* Security model redesigned again. Project_Users table deleted. For now both
+  respondent and admin grouping is kept in User_Groupings table (former Admin_Grouping).
+* Created Validators for security entities.
+* Getting rid of hardcode for defining security hierarchical relations at model level.
+* Added annotate_models extension
+* Added comments summarizing the current schema to the top of each ActiveRecord model
+  source file using annotate_model
+* Added doc:diagrams rake task ('lib/task/diagrams.rake'). Doesn't work properly yet.
+  Requirements: railroad gem and Graphviz (http://www.graphviz.org/).
+
+
+
+* TODO:
+* to Fix doc:diagrams task
+* to Add haml extension
+* to change and review all models (validation, relations and other)
+* to write new and change existing controlers
+* to implement sequrity (write metods and use them in views)
