@@ -124,7 +124,7 @@ class User < ActiveRecord::Base
 #    end
 #  end
 
-#  def mrcs
+#    def mrcs
 #      @the_mrcs  ||= []
 #      if self.is_user?
 #          @the_mrcs << self.owned_mrcs
