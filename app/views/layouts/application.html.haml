@@ -1,0 +1,48 @@
+!!!
+%html{ "xml:lang" => "en", :xmlns => "http://www.w3.org/1999/xhtml" }
+  %head
+    %title Liveline / TODO: Move to config.
+    %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "content-type" }
+    %meta{ :name => "description", :content => "" }
+    %meta{ :name => "keywords", :content => "" }
+    = stylesheet_link_tag 'scaffold'
+    = javascript_include_tag 'jquery.js', 'jrails.js', 'jquery-ui.js', 'application.js', :cache => true
+
+    // XXX: Bad code!!!
+    // Use "yield :head" here and "content_for :head do ... end" in projects view
+    /- if params[:controller] == 'projects'
+    /  =stylesheet_link_tag 'jquery-ui.css'
+    /  =javascript_include_tag 'ui.datepicker.js'
+
+  %body
+    #top-menu
+      %fieldset
+        %legend Liveline Logo:
+        - if logged_in?
+          #user-bar-greeting
+            = 'Logged in as ' + current_user.login
+            %span#user-top-assignment= ' : ' + current_user.top_assignment_name
+        - else
+          #user-bar-action= link_to 'Log in', login_path, {:title => 'Log in'}
+      %ul#top-menu-toolbar
+        - if current_user
+          %li= link_to "MRC", mrcs_url
+          %li= link_to "Projects", projects_url
+          %li= link_to "Clients", clients_url
+          %li= link_to "Users", users_url
+          %li= link_to "Built Projects", projects_url
+          %li= link_to "Built Surveys", surveys_url
+          %li= link_to "Approve Surveys", surveys_url
+          %li= link_to "Build Blogs", new_blog_url
+          %li= link_to "logout", logout_url
+        -else
+          %li= link_to "Home", root_url
+          %li= link_to "About", :controller => "site", :action => 'about'
+          %li= link_to "Services", :controller => "site", :action => 'services'
+          %li= link_to "Our Work", :controller => "site", :action => 'our_work'
+          %li= link_to "Contact", :controller => "site", :action => 'contact'
+          %li= link_to "Go Live>>Blog", root_url
+    #yield= yield
+
+    #ajax-indicator Loading
+    #footer Powered by  &copy; 2006-2009 Liveline

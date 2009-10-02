@@ -1,0 +1,10 @@
+-# Produces list of MRCs from @mrcs variable.
+
+- if @mrcs.blank?
+  No MRC found
+- else
+  - @mrcs.each do |mrc|
+    %p= link_to_remote mrc.name,                            |
+      :url => {:action => "edit_mrc_form", :id=>mrc.id},  |
+      :loading =>"$('#ajax-indicator').show();",          |
+      :complete =>"$('#ajax-indicator').hide();"          |

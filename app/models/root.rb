@@ -1,0 +1,20 @@
+# == Schema Information
+# Schema version: 20090930085359
+#
+# Table name: roots
+#
+#  id          :integer(4)      not null, primary key
+#  name        :string(255)
+#  description :string(255)
+#
+
+class Root < ActiveRecord::Base
+
+  include SecuritySubject
+
+  has_many :assignments, :as => :security_subject, :dependent => :destroy
+
+  def to_s
+    self[:name]
+  end
+end
