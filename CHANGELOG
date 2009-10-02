@@ -32,13 +32,34 @@
 * (September 29, 2009)*
 
 * Renamed CamelCase method names which is not in accordance with Ruby convention.
-* Renamed Users.isAdmin and Users.isGroup fields to is_Admin and isGroup
-  and fixed related source code.
+* Renamed Users.isAdmin and Users.isGroup fields and fixed related source code.
 * Fixed doc:diagram:models and doc:diagrams task. It produces models diagram to doc/models.pdf
+* Added HAML plugin. Start making translation erb -> haml.
+* Redesigning layout, making it DRY and get rid of spaghetti code.
+* Added uml:schema task to generate an XMI db/schema.xml file describing the current DB as seen by AR.
+  Produces XMI 1.1 for UML 1.3 Rose Extended, viewable e.g. by StarUML"
+* Added 'root' model as top security object, moved 'LiveLine' - hard code into it.
+
+* (September 30, 2009)*
+
+* Redesigning mrc screens and controllers.
+
+* (October 1, 2009)*
+
+* Redesigning client screens and controllers.
+
+* (October 2, 2009)*
+
+* Created and added admin_required filter to all admin pages
+* Fixed routes
+* Created empty home page
+* Redirect to home page if user is not admin
+* Do not allow create, edit and delete blogs and surveys if user is not admin
+* Do not allow access to MRC, Client, Projects, Users pages if user is not admin
+
 
 
 * TODO:
-* to Add haml extension
 * to modify and review all models (validation, relations and other)
 * to write new and modify existing controlers
 * to implement sequrity (write metods and use them in views)

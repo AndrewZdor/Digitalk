@@ -9,11 +9,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090929141825) do
+ActiveRecord::Schema.define(:version => 20091001122737) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "entity_id"
     t.integer  "permission_mask",       :default => 0
     t.integer  "assigned_by_user_id"
     t.datetime "created_at"
@@ -45,13 +44,6 @@ ActiveRecord::Schema.define(:version => 20090929141825) do
     t.datetime "updated_at"
   end
 
-  create_table "entities", :force => true do |t|
-    t.string   "name"
-    t.integer  "parent_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "mrcs", :force => true do |t|
     t.string   "name"
     t.string   "address"
@@ -62,6 +54,7 @@ ActiveRecord::Schema.define(:version => 20090929141825) do
     t.string   "phone"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "root_id"
   end
 
   create_table "project_groups", :force => true do |t|
@@ -80,6 +73,11 @@ ActiveRecord::Schema.define(:version => 20090929141825) do
     t.boolean  "display"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "roots", :force => true do |t|
+    t.string "name"
+    t.string "description"
   end
 
   create_table "surveys", :force => true do |t|

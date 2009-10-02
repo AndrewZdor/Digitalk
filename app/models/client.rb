@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20090928102943
+# Schema version: 20090930085359
 #
 # Table name: clients
 #
@@ -17,6 +17,8 @@
 #
 
 class Client < ActiveRecord::Base
+
+  include SecuritySubject
 
   belongs_to :mrc
   has_many :projects ,:dependent => :nullify

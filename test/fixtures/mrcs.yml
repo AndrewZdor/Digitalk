@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20090928102943
+# Schema version: 20090930085359
 #
 # Table name: mrcs
 #
@@ -13,6 +13,7 @@
 #  phone      :string(255)
 #  created_at :datetime
 #  updated_at :datetime
+#  root_id    :integer(4)
 #
 
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html

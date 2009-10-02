@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20090928102943
+# Schema version: 20090930085359
 #
 # Table name: projects
 #
@@ -16,7 +16,9 @@
 
 class Project < ActiveRecord::Base
 
-  belongs_to :client
+  include SecuritySubject
+
+  has_many :mrcs, :dependent => :nullify
 
   has_many :assignments, :as => :security_subject, :dependent => :destroy
 
@@ -28,5 +30,9 @@ class Project < ActiveRecord::Base
   validates_presence_of   :title
   validates_uniqueness_of :name, :scope => :client
   validates_length_of     :title,:within => 3..40
+
+  def name
+    self.title
+  end
 
 end

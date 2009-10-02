@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20090928102943
+# Schema version: 20090930085359
 #
 # Table name: mrcs
 #
@@ -13,10 +13,14 @@
 #  phone      :string(255)
 #  created_at :datetime
 #  updated_at :datetime
+#  root_id    :integer(4)
 #
 
 class Mrc < ActiveRecord::Base
 
+  include SecuritySubject
+
+  belongs_to :root
   has_many :clients, :dependent => :nullify
 
   has_many :assignments, :as => :security_subject, :dependent => :destroy

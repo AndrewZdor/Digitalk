@@ -1,4 +1,10 @@
-class SiteController < ApplicationController
+class SiteController < AuthController
+
+  skip_before_filter :admin_required, :except => [:dashboard]
+
+  def home
+  end
+
   def about
   end
 
@@ -11,6 +17,8 @@ class SiteController < ApplicationController
   def contact
   end
 
-def dashboard
-end
+  def dashboard
+  end
+
+
 end

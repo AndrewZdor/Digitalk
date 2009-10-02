@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20090928102943
+# Schema version: 20090930085359
 #
 # Table name: users
 #
@@ -15,8 +15,8 @@
 #  updated_at                :datetime
 #  remember_token            :string(40)
 #  remember_token_expires_at :datetime
-#  isGroup                   :boolean(1)
-#  isAdmin                   :boolean(1)
+#  is_group                  :boolean(1)
+#  is_admin                  :boolean(1)
 #
 
 require 'digest/sha1'
@@ -31,21 +31,20 @@ class User < ActiveRecord::Base
   has_many :assignments, :dependent => :destroy
   has_many :user_groupings, :dependent => :destroy
 
-  validates_length_of        :login,       :within => 6..100
-  validates_uniqueness_of    :login
-  validates_format_of        :login,       :with => Authentication.email_regex,
-      :message => Authentication.bad_email_message
-  validates_presence_of      :first_name,  :last_name, :login
-  validates_numericality_of  :mobile,      :allow_nil => true
-  validates_numericality_of  :phone,       :allow_nil => true
+  # From previous developer
+  #  has_many :owned_mrcs,:class_name=>"Mrc",:through =>:ownerships ,:conditions =>["ownable_type=?",'mrc'] ,:source=>:mrc,:include =>[:ownerships]
+  #  has_many :owned_clients ,:class_name=>"Client",:through =>:ownerships ,:conditions =>["ownable_type=?",'client'],:source=>:client,:include =>[:ownerships]
+  #  has_many :owned_projects ,:class_name=>"Project",:through =>:ownerships ,:conditions =>["ownable_type=?",'project'],:source=>:project,:include =>[:ownerships]
 
-  validates_presence_of :is_admin, :if => 'is_group',
-      :message => "Account must be of admin type to be a group."
+  validates_length_of        :login, :within => 6..100
+  validates_uniqueness_of    :login
+  validates_format_of        :login, :with => Authentication.email_regex, :message => Authentication.bad_email_message
+  validates_presence_of      :first_name, :last_name, :login
+  validates_numericality_of  :mobile, :allow_nil => true
+  validates_numericality_of  :phone, :allow_nil => true
+
+  validates_presence_of :is_admin, :if => 'is_group', :message => "Account must be of admin type to be a group."
   validate :is_group_valid?
-  def is_group_valid?
-    return unless is_group && !is_admin
-    errors.add(:is_group, "Grouping is not allowed for non-administrators.")
-  end
 
   # Make this class' validation code DRY.
   validates_associated :assignments, :user_groupings , :on => :update
@@ -54,11 +53,13 @@ class User < ActiveRecord::Base
 
   attr_protected :is_admin
 
-#  has_many :owned_mrcs,:class_name=>"Mrc",:through =>:ownerships ,:conditions =>["ownable_type=?",'mrc'] ,:source=>:mrc,:include =>[:ownerships]
-#  has_many :owned_clients ,:class_name=>"Client",:through =>:ownerships ,:conditions =>["ownable_type=?",'client'],:source=>:client,:include =>[:ownerships]
-#  has_many :owned_projects ,:class_name=>"Project",:through =>:ownerships ,:conditions =>["ownable_type=?",'project'],:source=>:project,:include =>[:ownerships]
-#
 #  named_scope :all_users,:conditions=>['level =?','user']
+
+  def is_group_valid?
+    return unless is_group && !is_admin
+    errors.add(:is_group, "Grouping is not allowed for non-administrators.")
+  end
+
 
   # --------------------------------- Autentication.
 
@@ -82,13 +83,35 @@ class User < ActiveRecord::Base
 
   # --------------------------------- Permission management.
 
-  def canDeleteUsers
+  def admin?
+    self.is_admin
   end
 
-  def canModifyUsers
+#  def get_current_assignment
+#    @master_assignment = assignments.find_
+#  end
+
+
+#  # Lazily returns current root object.
+#  # Uses the first met assignment to randomly select root.
+#  def current_root
+#    if @current_root == nil
+#      a = assignments.first
+#      @current_root = a.security_subject.root_instance if a != nil
+#    end
+#    return 'respondent' if @current_root == nil
+#    @current_root
+#  end
+
+  def top_assignment
+    return nil if assignments.empty?
+    assignments.sort_by {|a| SecuritySubject::H_LEVELS[a.security_subject.class]}.first # OPTIMIZE: Use min_by
   end
 
-  def getPermissionAsText
+  def top_assignment_name
+    a = top_assignment()
+    return 'respondent' if a.nil?
+    a.security_subject.name
   end
 
   # --------------------------------- Misc.

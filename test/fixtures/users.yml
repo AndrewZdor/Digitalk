@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20090928102943
+# Schema version: 20090930085359
 #
 # Table name: users
 #
@@ -15,8 +15,8 @@
 #  updated_at                :datetime
 #  remember_token            :string(40)
 #  remember_token_expires_at :datetime
-#  isGroup                   :boolean(1)
-#  isAdmin                   :boolean(1)
+#  is_group                  :boolean(1)
+#  is_admin                  :boolean(1)
 #
 
 

@@ -1,4 +1,7 @@
-class SurveysController < ApplicationController
+class SurveysController < AuthController
+
+  skip_before_filter :admin_require, :only => [:index, :show]
+
   # GET /surveys
   # GET /surveys.xml
   def index

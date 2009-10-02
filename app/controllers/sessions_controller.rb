@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+
   def new
     redirect_to(dashboard_url)  if logged_in?
   end

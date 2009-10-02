@@ -1,4 +1,7 @@
-class BlogsController < ApplicationController
+class BlogsController < AuthController
+
+  skip_before_filter :admin_require, :only => [:index, :show]
+
   # GET /blogs
   # GET /blogs.xml
   def index

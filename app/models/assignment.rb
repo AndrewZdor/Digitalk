@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20090928102943
+# Schema version: 20090930085359
 #
 # Table name: assignments
 #
@@ -19,8 +19,8 @@ class Assignment < ActiveRecord::Base
   belongs_to :user
   belongs_to :security_subject, :polymorphic => true
 
-  validates_presence_of :user_id, :entity_id, :subject_id, :permission_mask
-  validates_uniqueness_of :subject_id, :scope => [:user_id, :entity_id]
+  validates_presence_of :user_id, :security_subject_type, :security_subject_id, :permission_mask
+  validates_uniqueness_of :security_subject_id, :scope => [:user_id, :security_subject_type]
 
   #Disallow assignments for respondent users.
    validate :validate_is_admin
@@ -29,6 +29,6 @@ class Assignment < ActiveRecord::Base
      errors.add_to_base("Administrators only can be given assignments!")
    end
 
-  attr_protected :assigned_by_user_id
+#  attr_protected :assigned_by_user_id
 
 end
