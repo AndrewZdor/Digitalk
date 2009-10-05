@@ -1,0 +1,7 @@
+-# Renders visible Clients.
+-# Local variable 'model' used.
+
+#client_navigation
+  - locals = {:model => model, :entities => entities}
+  = render :partial => 'shared/entity_list_searchable', :locals => locals
+

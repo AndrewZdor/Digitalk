@@ -1,0 +1,13 @@
+-# Renders error and notification area.
+
+- if flash and flash[:notice]
+  .flash-notice= flash[:notice]
+  aaa
+
+- if flash and flash[:error]
+  .flash-error= flash[:error]
+
+
+- if flash and flash[:debug]
+  .flash-debug= flash[:debug]
+  ddd

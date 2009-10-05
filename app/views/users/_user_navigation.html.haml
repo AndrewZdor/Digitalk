@@ -1,0 +1,6 @@
+-# Renders visible Users.
+-# Local variable 'model' used.
+
+#user_navigation
+  - locals = {:model => model, :entities => entities}
+  = render :partial => 'shared/entity_list_searchable', :locals => locals

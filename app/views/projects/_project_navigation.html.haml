@@ -1,0 +1,6 @@
+-# Renders visible Projects.
+-# Local variable 'model' used.
+
+#mrc_navigation
+  - locals = {:model => model, :entities => entities}
+  = render :partial => 'shared/entity_list_searchable', :locals => locals

@@ -1,0 +1,11 @@
+-# Arranges html for the abstract Entity (Mrc, Project, Client, etc).
+-# Local variable 'model' and 'entities' used.
+
+- e_name = model.name.downcase
+- plural = e_name.pluralize
+
+#entity-navigation{:style => "float:left; width:25%"}
+  - locals = {:model => model, :entities => entities}
+  = render :partial => (plural + '/' + e_name + '_navigation'), :locals => locals
+
+#entity-form{:style => "float:left; width:75%"}

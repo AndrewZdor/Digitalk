@@ -1,0 +1,36 @@
+-# Renders list of entities with live search.
+-# Local variables 'model' and 'entity' used.
+
+- e_name = model.name.downcase
+- plural = e_name.pluralize
+- input_id = plural + '_filter'
+- search_hint = "search for #{e_name}"
+
+%fieldset
+  %legend= model::DESCRIPTION
+
+  %input(id=input_id){:type => "text", :name => input_id, :value => search_hint}
+  -# TODO: Use jQuery instead.
+  = observe_field input_id,                      |
+    :frequency => 0.5,                           |
+    :with => 'q',                                |
+    :url => {:action => 'filter', :cls => e_name}, |
+    :loading => "busy(true)",                    |
+    :complete => "busy(false)"                   |
+  :javascript
+    $('##{input_id}').focus(function () {
+      if($(this).val() == "#{search_hint}") $(this).val("")
+      });
+
+  =link_to_remote "Reset Filter", |
+      :url => {:action => "filter", :q => "", :cls => e_name}, |
+      :loading => "busy(true)", :complete => "busy(false)"   |
+
+  #mrc_list
+  - if entities.blank?
+    = "#{e_name} not found"
+  - else
+    - entities.each do |e|
+      .nav-list-item= link_to_remote e.name,                               |
+          :url => {:action => "edit_form", :id=>e.id, :cls=>e.class.name}, |
+          :loading => "busy(true)", :complete => "busy(false)"             |

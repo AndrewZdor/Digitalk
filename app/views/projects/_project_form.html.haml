@@ -1,0 +1,17 @@
+-# Project form. Uses 'entity' local variable to render content.
+
+%fieldset
+  %legend Market Research Company
+
+  - form_remote_for entity, :loading =>"busy(true)", :complete =>"busy(false)" do |f|                                                 |
+
+    = render :partial => "shared/entity_editor_actions", :locals => {:entity => entity}
+
+    #mrc_fields
+      %table
+        - fields = %w(title description start_date end_date display client_id)
+        - labels = ['Project title', 'Description', 'Start date', 'End date', 'Display', 'Client']
+        - fields.each_index do |i|
+          %tr
+            %td[entity, fields[i] + 'lbl']{:style => "text-align:right"}= label_tag fields[i], labels[i] + ':'
+            %td[entity, fields[i] + 'fld']{:style => "text-align:left"}= f.text_field fields[i]
