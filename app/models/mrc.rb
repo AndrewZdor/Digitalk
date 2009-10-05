@@ -18,6 +18,8 @@
 
 class Mrc < ActiveRecord::Base
 
+  DESCRIPTION = 'Market Research Companies'
+
   include SecuritySubject
 
   belongs_to :root

@@ -10,6 +10,8 @@
 
 class Root < ActiveRecord::Base
 
+  DESCRIPTION = 'MRC Contractors'
+
   include SecuritySubject
 
   has_many :assignments, :as => :security_subject, :dependent => :destroy

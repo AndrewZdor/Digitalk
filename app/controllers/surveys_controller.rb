@@ -1,4 +1,4 @@
-class SurveysController < AuthController
+class SurveysController < EntityController
 
   skip_before_filter :admin_require, :only => [:index, :show]
 

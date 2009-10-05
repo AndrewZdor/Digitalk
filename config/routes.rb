@@ -1,21 +1,28 @@
 ActionController::Routing::Routes.draw do |map|
 
-  map.with_options :controller=>'mrcs' do |m|
-      m.edit_mrc_form 'mrcs/edit_mrc_form' ,:action=>'edit_mrc_form'
+#  map.with_options :controller=>'mrcs' do |m|
+#      m.edit_mrc_form 'mrcs/edit_mrc_form' ,:action=>'edit_mrc_form'
+#  end
+
+  map.with_options :controller =>' users' do |u|
+    u.load_user_form    'users/load_user_form',    :action=> 'load_user_form'
+    u.edit_user_form    'users/edit_user_form',    :action=> 'edit_user_form'
+    u.set_children      'users/set_children',      :action=> 'set_children'
+    u.filter_children   'users/filter_children',   :action=> 'filter_children'
+    u.get_project_users 'users/get_project_users', :action=> 'get_project_users'
   end
 
-  map.with_options :controller=>'users' do |u|
-    u.load_user_form 'users/load_user_form' ,:action=>'load_user_form'
-    u.edit_user_form 'users/edit_user_form' ,:action=>'edit_user_form'
-    u.set_children 'users/set_children' ,:action=>'set_children'
-    u.filter_children 'users/filter_children' ,:action=>'filter_children'
-    u.get_project_users 'users/get_project_users' ,:action=>'get_project_users'
-  end
-
+  map.login  '/login',  :controller => 'sessions', :action => 'new'
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
-  map.login '/login', :controller => 'sessions', :action => 'new'
+
   map.register '/register', :controller => 'users', :action => 'create'
-  map.signup '/signup', :controller => 'users', :action => 'new'
+  map.signup   '/signup',   :controller => 'users', :action => 'new'
+
+  map.home      '/home',      :controller => 'site', :action => 'home'
+  map.about     '/about',     :controller => 'site', :action => 'about'
+  map.services  '/services',  :controller => 'site', :action => 'services'
+  map.our_work  '/our_work',  :controller => 'site', :action => 'our_work'
+  map.contact   '/contact',   :controller => 'site', :action => 'contact'
   map.dashboard '/dashboard', :controller => 'site', :action => 'dashboard'
 
   map.resources :surveys
@@ -23,9 +30,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :projects
   map.resources :clients
   map.resources :mrcs
-	map.resources :users
-  map.resource :session
-  map.resource :test
+  map.resources :users
+  map.resource  :session
+  map.resource  :test
 
   # The priority is based upon order of creation: first created -> highest priority.
 

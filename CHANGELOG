@@ -1,3 +1,6 @@
+* (September 21, 2009)*
+
+
 * (September 24, 2009)*
 
 * Generated project documentation
@@ -57,9 +60,26 @@
 * Do not allow create, edit and delete blogs and surveys if user is not admin
 * Do not allow access to MRC, Client, Projects, Users pages if user is not admin
 
+* (October 5, 2009)*
+
+* Added module SecuritySubject. Mixed-in to model objects. Adds security harness.
+* Improved EntityController - ancestor for all securable controllers which is provide methods
+  for displaying and manipulating data in UI taking into account user's permissions and assignments.
+* Moved to Rails 2.3.4
+* Extracted data manipulations from migration scripts
+* Updated application menu
+* Specified gems that this application depends on ("haml", :version => '2.2.6')
+  To install use 'rake gems:install' command in app root
+* Some views has been ported to haml from erb
+* First iteration for new MRC, Clients, Projects, Users views
 
 
 * TODO:
-* to modify and review all models (validation, relations and other)
-* to write new and modify existing controlers
-* to implement sequrity (write metods and use them in views)
+* create rake seed tasks to load initial or demo data to database from yaml files
+* drop all old migrations, use db:shema:load instead
+* do not use data manipulations inside migrations, use seed task instead
+* create rake task to add root administrator
+* add require haml 2.2.6 no config
+* modify and review all models (validation, relations and other)
+* write new and modify existing controlers
+* implement sequrity (write metods and use them in views)

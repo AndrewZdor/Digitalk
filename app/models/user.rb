@@ -22,9 +22,13 @@
 require 'digest/sha1'
 
 class User < ActiveRecord::Base
+
+  DESCRIPTION = 'Users'
+
   include Authentication
   include Authentication::ByPassword
   include Authentication::ByCookieToken
+  include SecuritySubject
 
   # --------------------------------- Data integrity.
 
@@ -87,31 +91,37 @@ class User < ActiveRecord::Base
     self.is_admin
   end
 
-#  def get_current_assignment
-#    @master_assignment = assignments.find_
-#  end
-
-
-#  # Lazily returns current root object.
-#  # Uses the first met assignment to randomly select root.
-#  def current_root
-#    if @current_root == nil
-#      a = assignments.first
-#      @current_root = a.security_subject.root_instance if a != nil
-#    end
-#    return 'respondent' if @current_root == nil
-#    @current_root
-#  end
-
+  # Returns top-level assignment.
   def top_assignment
     return nil if assignments.empty?
     assignments.sort_by {|a| SecuritySubject::H_LEVELS[a.security_subject.class]}.first # OPTIMIZE: Use min_by
   end
 
+  # Returns top-level assignment's entity name.
   def top_assignment_name
     a = top_assignment()
     return 'respondent' if a.nil?
     a.security_subject.name
+  end
+
+  # Returns all security accounts given user belongs to.
+  def groups_n_users
+    users = [self]
+    unless self.user_groupings.empty?
+      self.user_groupings.each {|ug| users << ug.group}
+      users.uniq!
+    end
+    users
+  end
+
+  def can_create(model_class)
+
+  end
+
+  def can_modify(entity)
+  end
+
+  def can_delete(entity)
   end
 
   # --------------------------------- Misc.

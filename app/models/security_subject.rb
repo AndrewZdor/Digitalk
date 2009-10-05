@@ -1,4 +1,4 @@
-# Tied to model objects
+# Mixed-in to model objects. Adds security harness.
 module SecuritySubject
 
   # Declarative models hierarvhy.
@@ -17,38 +17,52 @@ module SecuritySubject
   #    @@master_model = assoc.klass
   #  end
 
-  # Returns array of items allowed for user to show for the current (self) model.
-  def self.find_allowed
+  # Callback for extending Mixee classes.
+  def self.included model
+    model.extend ClassMethods
+  end
 
+  # Workaround for extending model classes with 'class' methods.
+  module ClassMethods
+    # Returns array of entities allowed for user to show for the given model.
+    def all_allowed_for (user)
+      groups_n_users = user.groups_n_users
+      # OPTIMIZE for large collections.
+      all.select do |e| # Loop through all instances of given model.
+        # Climb up each hierarchy for top level essignments.
+        e.climb_up.any? {|e2| e2.assignments.any? {|a| groups_n_users.include? a.user} }
+      end
+    end
+  end
+
+  # Get the instance of master model or nil if the self is an instance of root.
+  def master_entity
+    master_model = H_PARENTS[self.class]
+    return nil if master_model == nil
+    master_model.find(self[master_model.name.downcase + '_id'])
+  end
+
+  # Climbs up the hierarchy tree until given condition is false or root object reached.
+  # Returns array of model objects, including starting one.
+  def climb_up #&condition
+    entities = []
+    entity = self
+    begin
+      entities << entity
+#      break if block_given? and condition.call
+    end while entity = entity.master_entity
+    entities
+  end
+
+  # Returns true if self object allowed for viewing by given user.
+  # Internally checks if this or top-level parents have assignments for given user.
+  def allowed_for (user)
+    groups_n_users = user.groups_n_users
+    climb_up.any? {|e| e.assignments.any? {|a| groups_n_users.include? a.user} }
   end
 
   # Returns permissions for given securable object.
   def get_permission
-  end
-
-
-  # Get the instance of master model or nil if the self is an instance of root.
-  def master_object
-    master_model = H_PARENTS[self.class]
-    return nil if master_model == nil
-    master_model.find(master_model[master_model.downcase + '_id'])
-  end
-
-  # Returns root instance of the self object.
-  # TODO: Select root with the most significant assignments.
-  def root_instance
-    tmp_instance = self
-    while ((tmp_instance = master_instance()) != nil) do end
-    tmp_instance
-  end
-
-  # Climbs up the hierarchy tree until root object reached.
-  # If steps == 0 returns the self object, if 1 - the closest parent returned.
-  def climb_up (steps = 0)
-    tmp = self # The first objects under the feet.
-    while tmp.nil? do
-      yield tmp
-    end
   end
 
 end

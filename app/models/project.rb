@@ -16,6 +16,8 @@
 
 class Project < ActiveRecord::Base
 
+  DESCRIPTION = 'Projects'
+
   include SecuritySubject
 
   has_many :mrcs, :dependent => :nullify

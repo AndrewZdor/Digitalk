@@ -5,9 +5,11 @@ class CreateRoles < ActiveRecord::Migration
       t.text :description
       t.timestamps
     end
-		Role.create(:name=>'admin',:description=>'admin')
-		Role.create(:name=>'write',:description=>'write')
-		Role.create(:name=>'read',:description=>'read')
+
+#		Role.create(:name=>'admin',:description=>'admin')
+#		Role.create(:name=>'write',:description=>'write')
+#		Role.create(:name=>'read',:description=>'read')
+
   end
 
   def self.down

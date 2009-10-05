@@ -1,4 +1,4 @@
-class SiteController < AuthController
+class SiteController < ApplicationController
 
   skip_before_filter :admin_required, :except => [:dashboard]
 

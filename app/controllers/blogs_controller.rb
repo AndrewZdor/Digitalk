@@ -1,4 +1,4 @@
-class BlogsController < AuthController
+class BlogsController < EntityController
 
   skip_before_filter :admin_require, :only => [:index, :show]
 

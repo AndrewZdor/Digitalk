@@ -18,6 +18,8 @@
 
 class Client < ActiveRecord::Base
 
+  DESCRIPTION = 'Clients'
+
   include SecuritySubject
 
   belongs_to :mrc
