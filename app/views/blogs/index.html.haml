@@ -1,0 +1,23 @@
+%h1 Listing blogs
+
+%table
+  %tr
+    %th Project
+    %th Title
+    %th Description
+    %th Published date
+    %th Is published
+
+  - @blogs.each do |blog|
+    %tr
+      %td= h blog.project_id
+      %td= h blog.title
+      %td= h blog.description
+      %td= h blog.published_date
+      %td= h blog.is_published
+      %td= link_to 'Show', blog
+      %td= link_to 'Edit', edit_blog_path(blog)
+      %td= link_to 'Destroy', blog, :confirm => 'Are you sure?', :method => :delete
+%br
+
+= link_to 'New blog', new_blog_path

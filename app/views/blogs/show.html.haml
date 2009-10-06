@@ -1,0 +1,15 @@
+%p
+  %b Title:
+  = h @blog.title
+%p
+  %b Description:
+  = h @blog.description
+%p
+  %b Published date:
+  = h @blog.published_date
+%p
+  %b Is published:
+  = h @blog.is_published
+
+= link_to 'Edit', edit_blog_path(@blog) |
+= link_to 'Back', blogs_path

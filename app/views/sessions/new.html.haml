@@ -1,0 +1,18 @@
+%center
+  %h1 Log In
+  - form_tag session_path do
+    %table
+      %tr
+        %td= label_tag 'login'
+        %td= text_field_tag 'login', @login
+      %tr
+        %td= label_tag 'password'
+        %td= password_field_tag 'password', nil
+      %tr
+        %td
+          %p= label_tag 'remember_me', 'Remember me'
+        %td
+          %p= check_box_tag 'remember_me', '1', @remember_me
+      %tr
+        %td{:style => 'colspan:2'}= submit_tag 'Log in'
+
