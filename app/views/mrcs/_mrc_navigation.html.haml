@@ -1,6 +1,4 @@
 -# Renders visible MRCs.
--# Local variable 'model' used.
 
-#mrc_navigation
-  - locals = {:model => model, :entities => entities}
-  = render :partial => 'shared/entity_list_searchable', :locals => locals
+#mrc-nav
+  = render :partial => SEARCH_LIST_VIEW, :locals => local_assigns

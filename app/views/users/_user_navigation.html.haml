@@ -1,6 +1,11 @@
--# Renders visible Users.
--# Local variable 'model' used.
+-# Renders User navigation view.
 
 #user_navigation
-  - locals = {:model => model, :entities => entities}
-  = render :partial => 'shared/entity_list_searchable', :locals => locals
+  #complex-filter{:style > "float:left"}
+    %fieldset
+      %Legend Filter
+      =link_to_remote "Reset Filter", |
+          :url => {:action => "reset_complex_filter"}, |
+          :loading => "busy(true)", :complete => "busy(false)"
+
+  = render :partial => @search_list_view, :locals => local_assigns

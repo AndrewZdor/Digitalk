@@ -21,8 +21,9 @@ class Project < ActiveRecord::Base
   include SecuritySubject
 
   has_many :mrcs, :dependent => :nullify
-
   has_many :assignments, :as => :security_subject, :dependent => :destroy
+  has_many :surveys
+  has_many :blogs
 
 #   has_many :ownerships,:foreign_key=>'ownable_id'
 #   has_many :users, :through => :ownerships,:conditions =>["ownable_type=?",'project'] ,:source=>:user

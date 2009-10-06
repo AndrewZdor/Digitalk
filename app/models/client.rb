@@ -29,11 +29,6 @@ class Client < ActiveRecord::Base
 
   validates_uniqueness_of :name, :scope => :mrc
 
-#  has_many :ownerships,:foreign_key=>'ownable_id'
-#  has_many :users, :through => :ownerships,:conditions =>["ownable_type=?",'client'] ,:source=>:user
-
-#  attr_accessor :current_user_right
-
   validates_presence_of :name
   validates_length_of   :name, :within => 3..40
 

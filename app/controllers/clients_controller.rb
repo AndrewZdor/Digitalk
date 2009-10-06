@@ -2,7 +2,17 @@ class ClientsController < EntityController
 
   MODEL = Client # TODO: Grab it from rails metadata.
 
+#  before_filter :get_mrcs_and_clients,:only=>[:index,:edit_client_form,:load_client_form,:live_search,:cancel,:reset_filter]
+#  before_filter :get_clients,:only=>[:show_clients]
+#  before_filter :get_mrcs,:only=>[:load_client_form,:create,:destroy]
+#  before_filter :can_add_client ,:only=>[:index,:edit_mrc_form,:create,:destroy,:load_client_form,:cancel,:load_client_form]
+#  before_filter :owned_mrcs,:only=>[:load_client_form]
 
+
+  def index
+    @mrcs = current_user.all_allowed_in Mrc
+    super
+  end
 
 #
 #  before_filter :get_mrcs_and_clients,:only=>[:index,:edit_client_form,:load_client_form,:live_search,:cancel,:reset_filter]

@@ -1,6 +1,6 @@
-class SurveysController < EntityController
+class SurveysController < ApplicationController
 
-  skip_before_filter :admin_require, :only => [:index, :show]
+  before_filter :admin_required, :except => [:index, :show]
 
   # GET /surveys
   # GET /surveys.xml

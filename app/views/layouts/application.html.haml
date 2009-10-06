@@ -24,6 +24,7 @@
     /  =javascript_include_tag 'ui.datepicker.js'
 
   %body
+
     #top-menu
       %fieldset
         %legend LiveLine Logo:
@@ -57,7 +58,11 @@
             %li= link_to "Go Live>>Blog", root_url
             - if logged_in?
               %li= link_to "logout", logout_url
+
+    #flash= render :partial => 'shared/flash'
+
     #yield= yield
 
     #ajax-indicator Loading
-    #footer Powered by  &copy; 2006-2009 Liveline
+
+    #footer Powered by  &copy; 2006-2009 LiveLine

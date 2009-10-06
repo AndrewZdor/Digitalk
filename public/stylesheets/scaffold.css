@@ -95,3 +95,11 @@ a:hover { color: #fff; background-color:#000; }
 }
 
 #footer {clear: both}
+
+.inactive {
+  font-color:grey
+}
+
+.floatleft {
+  float:left
+}

@@ -40,3 +40,9 @@ Rails::Initializer.run do |config|
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
 end
+
+# Constants, visible in all views and controllers.
+ENTITY_VIEW = 'shared/_entity'
+SEARCH_LIST_VIEW = 'shared/entity_list_searchable'
+ACTIONS_VIEW = 'shared/entity_editor_actions'
+

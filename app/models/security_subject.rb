@@ -24,22 +24,15 @@ module SecuritySubject
 
   # Workaround for extending model classes with 'class' methods.
   module ClassMethods
-    # Returns array of entities allowed for user to show for the given model.
-    def all_allowed_for (user)
-      groups_n_users = user.groups_n_users
-      # OPTIMIZE for large collections.
-      all.select do |e| # Loop through all instances of given model.
-        # Climb up each hierarchy for top level essignments.
-        e.climb_up.any? {|e2| e2.assignments.any? {|a| groups_n_users.include? a.user} }
-      end
-    end
   end
 
   # Get the instance of master model or nil if the self is an instance of root.
   def master_entity
     master_model = H_PARENTS[self.class]
-    return nil if master_model == nil
-    master_model.find(self[master_model.name.downcase + '_id'])
+    return nil unless master_model
+    master_id = self[master_model.name.downcase + '_id']
+    return nil unless master_id
+    master_model.find(master_id)
   end
 
   # Climbs up the hierarchy tree until given condition is false or root object reached.

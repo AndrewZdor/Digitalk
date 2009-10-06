@@ -1,8 +1,8 @@
 -# Actions for entity editor.
--# 'entity' local variable used.
+-# 'model' and 'entity'(optional) local variable used.
 
-- model = entity.class
-- e_name = model.name.downcase
+- m_name = model.name.downcase
+- entity ||= nil # Optional local.
 
 #entity-form-actions
   %fieldset
@@ -11,44 +11,44 @@
     %table
       %tr
         %td#action-new
-          - if true #entity.can_create(current_user)
+          - if current_user.can_create(model)
             = button_to_remote "New", |
-                :url => {:action => "load_form", :cls => e_name}, |
-                :loading =>"busy(true)", :complete =>"busy(false)"      |
+                :url => {:action => "create", :cls => m_name}, |
+                :loading =>"busy(true)", :complete =>"busy(false)" |
           -else
-            %span{:style => "font-color:grey"} New
+            .inactive New
 
         %td#action-cancel
-          - if true #entity.can_modify(current_user)
+          - if current_user.can_modify(entity)
             = button_to_remote "Cancel", |
-                :url => {:action => "cancel", :id => entity.id, :cls => e_name}, |
+                :url => {:action => "cancel", :id => entity.id, :cls => m_name}, |
                 :loading =>"busy(true)", :complete =>"busy(false)"      |
           -else
-            %span{:style => "font-color:grey"} Cancel
+            .inactive Cancel
 
         %td#action-copy
-          - if true #entity.can_create(current_user)
+          - if entity and current_user.can_create(model)
             = button_to_remote "Copy", |
-                :url => {:action => "copy", :id => entity.id, :cls => e_name}, |
-                :loading =>"busy(true)", :complete =>"busy(false)"  |
+                :url => {:action => "copy", :id => entity.id, :cls => m_name}, |
+                :loading => "busy(true)", :complete => "busy(false)"  |
           -else
-            %span{:style => "font-color:grey"} Copy
+            .inactive Copy
 
       %tr
         %td#action-save
-          - if true #entity.can_create(current_user)
+          - if current_user.can_modify(entity)
             = submit_to_remote 'save_btn', 'Save', |
-                :url => {:action => "update", :id => entity.id, :cls => e_name}, |
-                :loading =>"busy(true)", :complete =>"busy(false)"  |
+                :url => {:action => "update", :id => entity.id, :cls => m_name}, |
+                :loading => "busy(true)", :complete => "busy(false)"  |
           -else
-            %span{:style => "font-color:grey"} Save
+            .inactive Save
 
         %td#action-delete
-          - if true #entity.can_delete(current_user)
+          - if current_user.can_delete(entity)
             = button_to_remote 'Delete', |
-              :url => {:action => 'destroy', :id => entity.id, :cls => e_name}, |
+              :url => {:action => 'destroy', :id => entity.id, :cls => m_name}, |
               :method => :delete, |
               :confirm => 'Are you sure?', |
               :loading =>"busy(true)", :complete =>"busy(false)" |
           -else
-            %span{:style => "font-color:grey"} Delete
+            .inactive Delete

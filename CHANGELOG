@@ -73,13 +73,23 @@
 * Some views has been ported to haml from erb
 * First iteration for new MRC, Clients, Projects, Users views
 
+* (October 6, 2009)*
+
+* Converted all blog views from erb to haml
+* Converted session view from erb to haml
+* Added 'Remember me' checkbox to Login dialog
+* Created template (and included it to application layout)
+  for rendering all notifications, errors and other messages from flash hash
+* Added README.markdown file with project summary and quick start instructions
+* Added notifications to CRUD actions
+
+
 
 * TODO:
 * create rake seed tasks to load initial or demo data to database from yaml files
 * drop all old migrations, use db:shema:load instead
 * do not use data manipulations inside migrations, use seed task instead
 * create rake task to add root administrator
-* add require haml 2.2.6 no config
 * modify and review all models (validation, relations and other)
 * write new and modify existing controlers
 * implement sequrity (write metods and use them in views)

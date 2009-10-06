@@ -23,12 +23,12 @@ require 'digest/sha1'
 
 class User < ActiveRecord::Base
 
-  DESCRIPTION = 'Users'
+  DESCRIPTION = 'Clients'
 
+  include SecuritySubject
   include Authentication
   include Authentication::ByPassword
   include Authentication::ByCookieToken
-  include SecuritySubject
 
   # --------------------------------- Data integrity.
 
@@ -115,13 +115,27 @@ class User < ActiveRecord::Base
   end
 
   def can_create(model_class)
-
+    true #FIXME !!!
   end
 
   def can_modify(entity)
+    return false unless entity
+    true #FIXME !!!
   end
 
   def can_delete(entity)
+    return false unless entity
+    true #FIXME !!!
+  end
+
+  # Returns array of entities allowed to show for the given model class.
+  def all_allowed_in(model_class)
+    gnu = groups_n_users
+    # OPTIMIZE for large collections.
+    model_class.all.select do |e| # Loop through all instances of given model.
+      # Climb up each hierarchy for top level essignments.
+      e.climb_up.any? {|e2| e2.assignments.any? {|a| gnu.include? a.user} }
+    end
   end
 
   # --------------------------------- Misc.
