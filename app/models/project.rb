@@ -1,11 +1,11 @@
 # == Schema Information
-# Schema version: 20090930085359
+# Schema version: 20091007074557
 #
 # Table name: projects
 #
 #  id          :integer(4)      not null, primary key
 #  client_id   :integer(4)
-#  title       :string(255)
+#  name        :string(255)
 #  description :text
 #  start_date  :date
 #  end_date    :date
@@ -21,21 +21,13 @@ class Project < ActiveRecord::Base
   include SecuritySubject
 
   has_many :mrcs, :dependent => :nullify
-  has_many :assignments, :as => :security_subject, :dependent => :destroy
   has_many :surveys
   has_many :blogs
 
-#   has_many :ownerships,:foreign_key=>'ownable_id'
-#   has_many :users, :through => :ownerships,:conditions =>["ownable_type=?",'project'] ,:source=>:user
+  has_many :assignments, :as => :security_subject, :dependent => :destroy
 
-# attr_accessor :current_user_right
+  validates_presence_of   :name
+  validates_length_of     :name, :within => 3..40
 
-  validates_presence_of   :title
   validates_uniqueness_of :name, :scope => :client
-  validates_length_of     :title,:within => 3..40
-
-  def name
-    self.title
-  end
-
 end

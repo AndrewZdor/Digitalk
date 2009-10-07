@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20090930085359
+# Schema version: 20091007074557
 #
 # Table name: clients
 #
@@ -27,9 +27,10 @@ class Client < ActiveRecord::Base
 
   has_many :assignments, :as => :security_subject, :dependent => :destroy
 
-  validates_uniqueness_of :name, :scope => :mrc
 
   validates_presence_of :name
   validates_length_of   :name, :within => 3..40
+
+  validates_uniqueness_of :name, :scope => :mrc
 
 end

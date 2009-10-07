@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20090930085359
+# Schema version: 20091007074557
 #
 # Table name: users
 #
@@ -129,10 +129,10 @@ class User < ActiveRecord::Base
   end
 
   # Returns array of entities allowed to show for the given model class.
-  def all_allowed_in(model_class)
+  def all_allowed_in(model_class, conditions = nil)
     gnu = groups_n_users
     # OPTIMIZE for large collections.
-    model_class.all.select do |e| # Loop through all instances of given model.
+    model_class.all(:conditions => conditions).select do |e| # Loop through all instances of given model.
       # Climb up each hierarchy for top level essignments.
       e.climb_up.any? {|e2| e2.assignments.any? {|a| gnu.include? a.user} }
     end

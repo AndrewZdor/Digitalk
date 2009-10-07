@@ -1,4 +1,13 @@
 -# Renders Project navigation view.
 
-#mrc_navigation
-  = render :partial => @search_list_view, :locals => local_assignments
+#project_navigation
+
+  #mrc-nav.floatleft
+    = render :partial => SEARCH_LIST_VIEW, |
+      :locals => {:model => Mrc, :entities => @mrcs, :target => 'client'} |
+
+  -# Render client navigation only after current Mrc selected.
+  #client-nav.floatleft
+
+  -# Render project navigation only after current Client selected.
+  #project-nav.floatleft

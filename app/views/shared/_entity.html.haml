@@ -5,7 +5,7 @@
 - plural = e_name.pluralize
 
 #entity-body
-  #entity-nav.floatleft{:style => "width:25%"}
+  #entity-nav.floatleft
     = render :partial => (plural + '/' + e_name + '_navigation'), :locals => local_assigns
 
-#entity-form.floatleft{:style => "width:75%"}
+#entity-form.floatleft

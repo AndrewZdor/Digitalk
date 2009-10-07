@@ -1,18 +1,7 @@
--# MRC form. Uses 'entity' local variable to render content.
+-# MRC form.
 
 - fields = %w(name address address2 city state zip phone)
 - labels = ['Market Research Company', 'Address', 'Address 2', 'City', 'State', 'Zip', 'Phone Number']
 
-- form_remote_for entity, :loading =>"busy(true)", :complete =>"busy(false)" do |f|                                                 |
-
-  #entity-actions= render :partial => ACTIONS_VIEW, :locals => local_assigns
-
-  %fieldset
-    %legend Market Research Company
-    %table
-      - fields.each_index do |i|
-        %tr
-          %td[entity, fields[i] + 'lbl']{:style => "text-align:right"}= f.label fields[i], labels[i] + ':'
-          %td[entity, fields[i] + 'fld']{:style => "text-align:left"}= f.text_field fields[i]
-
-  -# flash= render :partial => 'shared/flash'
+- locals = local_assigns.merge({:fields => fields, :labels => labels})
+= render :partial => FORM_VIEW, :locals => locals

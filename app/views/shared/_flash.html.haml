@@ -1,13 +1,5 @@
 -# Renders error and notification.
 
-- if self.flash[:notice]
-  %p.notice= self.flash[:notice]
-
-- if self.flash[:warning]
-  %p.warning= flash[:warning]
-
-- if self.flash[:error]
-  %p.error= self.flash[:error]
-
-- if self.flash[:debug]
-  %p.debug= self.flash[:debug]
+- %w(error warning notice debug).each do |e|
+  - if self.flash[e]
+    %p.notice= self.flash[e]

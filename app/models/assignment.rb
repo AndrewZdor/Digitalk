@@ -1,11 +1,10 @@
 # == Schema Information
-# Schema version: 20090930085359
+# Schema version: 20091007074557
 #
 # Table name: assignments
 #
 #  id                    :integer(4)      not null, primary key
 #  user_id               :integer(4)
-#  entity_id             :integer(4)
 #  permission_mask       :integer(4)      default(0)
 #  assigned_by_user_id   :integer(4)
 #  created_at            :datetime

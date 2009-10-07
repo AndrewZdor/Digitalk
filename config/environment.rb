@@ -45,4 +45,4 @@ end
 ENTITY_VIEW = 'shared/_entity'
 SEARCH_LIST_VIEW = 'shared/entity_list_searchable'
 ACTIONS_VIEW = 'shared/entity_editor_actions'
-
+FORM_VIEW = 'shared/form'

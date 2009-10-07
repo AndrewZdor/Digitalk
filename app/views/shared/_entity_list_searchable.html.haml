@@ -12,7 +12,6 @@
   %legend= model::DESCRIPTION
 
   %input(id=input_id){:type=>"text", :name=>input_id, :value=>search_hint}
-  -# TODO: Use jQuery instead.
   = observe_field input_id,                      |
     :frequency => 0.5,                           |
     :with => 'q',                                |

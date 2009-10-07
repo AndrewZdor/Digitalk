@@ -2,10 +2,8 @@
 
 #client_navigation
 
-  -#
-    #mrc-nav.floatleft= render :partial => SEARCH_LIST_VIEW, |
-        :locals => {:model => Mrc, :entities => @mrcs, :target => 'client-nav'} |
+  #mrc-nav.floatleft= render :partial => SEARCH_LIST_VIEW, |
+      :locals => {:model => Mrc, :entities => @mrcs, :target => 'client'} |
 
-  - logger.debug "-------------------------------------------- #{local_assigns}"
-  #client-nav.floatleft= render :partial => SEARCH_LIST_VIEW, |
-      :locals => local_assigns |
+  -# Render client navigation only after current Mrc selected.
+  #client-nav.floatleft

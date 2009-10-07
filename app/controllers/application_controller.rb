@@ -1,9 +1,5 @@
 class ApplicationController < ActionController::Base
 
-  rescue_from ActiveRecord::RecordNotFound, :with => :rescue_record_not_found
-  rescue_from SecurityError, :with => :rescue_security_error # TODO: Replace with something more accurate.
-  rescue_from ActiveRecord::RecordNotSaved, :with => :rescue_record_not_saved
-
   helper :all
 
   protect_from_forgery
@@ -16,28 +12,6 @@ class ApplicationController < ActionController::Base
   def admin_required
       raise SecurityError unless current_user.admin?
   end
-
-  #-------------------------------- Rescue from errors.
-
-    def rescue_record_not_found
-      flash.now[:error] = "Record not found - model:#{@e_name}, id:#{@Id}"
-      logger.error flash[:error]
-      redirect_back_or_default(:root)
-    end
-
-    def rescue_security_error
-      flash.now[:error] = "#{current_user.login} not authorized to access this page!"
-      flash[:error] = "#{current_user.login} is not authorized to access this page!"
-      logger.error flash[:error]
-      redirect_back_or_default(:root)
-    end
-
-    def rescue_record_not_saved
-      flash.now[:error] = "Record cannot be saved - model:#{@e_name}, id:#{@Id}!"
-          + @entity.errors.full_messages.join("<br />")
-      logger.error flash[:error]
-      redirect_back_or_default(:root)
-    end
 
 #	def can_add_mrc
 #    if current_user.is_user?
