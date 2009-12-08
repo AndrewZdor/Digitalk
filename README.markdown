@@ -1,7 +1,11 @@
 SUMMARY
 =======
 
-Digitalk Platform - Initial Build
+Digitalk - marketing research platform
+
+Digitalk is web based platform for supporting online qualitative research projects 
+which delivers the following business objectives: self-sufficient, operational efficiency and effectiveness, 
+usability, leverage mobility, white-labelling, exclusivity, scalability, reusable, interchangable roles, privacy.
 
 
 QUICK START
