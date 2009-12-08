@@ -13,7 +13,7 @@ Running from sources (latest and greatest features)
 
 1. Clone the git repo
 
-        git clone git@github.com:Aberon/KR_LL.git
+        git clone git@github.com...
 
 2. Modify if necessary config/database.yml file
         
