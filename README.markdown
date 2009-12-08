@@ -34,13 +34,13 @@ Running from sources (latest and greatest features)
 Browse application
 ------------------
 
-http://localhost:xxxx
+http://localhost:xxx
 
 
 More Information
 ----------------
 
-* [Wiki](https://github.com/Aberon/KR_LL/wikis)
+* [Wiki](https://)
 * [Blog](http://)
 * [Google Group](http://groups.google.com/group/...)
 
